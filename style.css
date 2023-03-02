@@ -1,0 +1,108 @@
+body {
+    box-sizing: border-box;
+}
+h1, h2 {
+    margin: 10px 0;
+    padding: 0;
+}
+.create {
+    background-color: var(--Mint-Green);
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input, select {
+    max-width: 200px;
+    padding: 3px;
+}
+.tamagotchi {
+    background: #FFC6D9;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.newpetdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+    background:  #BFE9FF;
+    border-radius: 45% 45% 48% 52% / 73% 73% 28% 27%; 
+    text-align: center;
+    box-shadow: inset 0 0 10px 5px var(--Lavender);
+}
+.displayDiv {
+    width: 55%;
+    padding: 10px;
+    background-color: rgb(127, 125, 125);
+    border-radius: 5px;
+    box-shadow: inset 0 0 2px 3px rgb(81, 75, 84);
+    
+}
+.statsDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.addbtn{
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid var(--Lavender)
+}
+.addbtn:hover {
+    background-color: #58cb5c;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+.buttonDiv {
+    height: 50px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonDiv > button:nth-child(2){
+    align-self: flex-end;
+}
+button:not(.addbtn){
+    display: flex;
+    border-radius: 50%;
+    padding: 6px;
+    margin: 4px;
+    border: 1px solid var(--Lavender);
+    background-color: var(--Yellow);
+}
+button:hover:not(.addbtn){
+    background-color: var(--Mint-Green);
+}
+img {
+    border-radius: 4px;
+}
+progress {
+    width: 30px;
+    height: 15px;
+    background-color: #f2f1f1;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid rgb(23, 103, 22);
+    box-shadow: 0 0 1px 1px rgb(180, 182, 178);
+  }
+  
+  progress::-webkit-progress-bar {
+    background-color: var(--Mint-Green);
+  }
+  
+  progress::-webkit-progress-value {
+    background-color: #389b3b;
+  }
+
