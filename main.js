@@ -113,7 +113,7 @@ let renderTamagotchi = () => {
     newDiv.innerHTML = `
   <h2>${pet.name}</h2>
   <div class="displayDiv">
-  <img src="/assets/${pet.animalType}.jpg" width="128px" height="128px" />
+  <img src="./assets/${pet.animalType}.jpg" width="128px" height="128px" />
   <div class="statsDiv">
   <div class="stats"><p>&#128564;</p><progress id="tiredprog" value="${pet.tiredness}" max="100"></progress></div>
   <div class="stats"><p>&#127829;</p><progress id="hungerprog" value="${pet.hunger}" max="100"></progress></div>
