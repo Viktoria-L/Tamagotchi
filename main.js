@@ -79,7 +79,7 @@ class Pet {
 }
 
 let tamagotchiList = [];
-let cat = new Pet("Tamagotchi", "cat");
+let cat = new Pet("Tamagotchi", "Cat");
 tamagotchiList.push(cat);
 
 const addBtn = document.querySelector(".addbtn");
