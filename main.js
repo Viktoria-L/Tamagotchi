@@ -10,7 +10,7 @@ class Pet {
 
   nap() {
     if (this.tiredness > 40) {
-      this.tiredness -= 40;
+      this.tiredness -= 20;
     } else {
       this.tiredness = 0;
     }
@@ -29,8 +29,8 @@ class Pet {
     } else {
       this.happiness = 0;
     }
-    console.log(`${this.name} took a nap!`);
 
+    actionText(`${this.name} took a nap!`);
   }
 
   play() {
@@ -56,10 +56,9 @@ class Pet {
       } else {
         this.happiness = 100;
       }
-      console.log(`You played with ${this.name}!`);
-
+      actionText(`You played with ${this.name}!`);
     } else {
-      console.log(`${this.name} is to tired to play.`);
+      actionText(`${this.name} is to tired to play.`);
     }
   }
   eat() {
@@ -69,18 +68,20 @@ class Pet {
       this.tiredness = 100;
     }
     if (this.hunger > 60) {
-      this.hunger -= 60;
+      this.hunger -= 20;
     } else {
       this.hunger = 0;
     }
-    console.log(`${this.name} thanks you for the food!`);
-
+    actionText(`${this.name} thanks you for the food!`);
   }
 }
 
+const tamagotchiDiv = document.querySelector(".tamagotchi");
+const infoDiv = document.querySelector(".info");
 let tamagotchiList = [];
-let cat = new Pet("Tamagotchi", "Cat");
-tamagotchiList.push(cat);
+//La till en tamagotchi för test av styling
+// let cat = new Pet("Tamagotchi", "Cat");
+// tamagotchiList.push(cat);
 
 const addBtn = document.querySelector(".addbtn");
 
@@ -103,17 +104,15 @@ let addTamagotchi = () => {
 };
 
 let renderTamagotchi = () => {
-  const tamagotchiDiv = document.querySelector(".tamagotchi");
   tamagotchiDiv.innerHTML = "";
 
   tamagotchiList.forEach((pet) => {
- 
     let newDiv = document.createElement("div");
     newDiv.className = "newpetdiv";
     newDiv.innerHTML = `
   <h2>${pet.name}</h2>
   <div class="displayDiv">
-  <img src="./assets/${pet.animalType}.jpg" width="128px" height="128px" />
+  <img src="./assets/${pet.animalType}.png" width="128px" height="128px" />
   <div class="statsDiv">
   <div class="stats"><p>&#128564;</p><progress id="tiredprog" value="${pet.tiredness}" max="100"></progress></div>
   <div class="stats"><p>&#127829;</p><progress id="hungerprog" value="${pet.hunger}" max="100"></progress></div>
@@ -122,54 +121,62 @@ let renderTamagotchi = () => {
   </div>
   </div>
    `;
-   tamagotchiDiv.append(newDiv);
+    tamagotchiDiv.append(newDiv);
 
+    if (
+      pet.tiredness === 100 ||
+      pet.loneliness === 100 ||
+      pet.hunger === 100 ||
+      pet.happiness === 0
+    ) {
+      showModal(`You killed ${pet.name}`);
+      actionText(
+        `You killed ${pet.name} because some of the stats become to high or to low. Here are the stats:\n
+        Tired: ${pet.tiredness}\n
+        Hunger: ${pet.hunger}\n
+        Loneliness: ${pet.loneliness}\n
+        Happiness: ${pet.happiness}`
+      );
 
-   if(pet.tiredness === 100 || pet.loneliness === 100 || pet.hunger === 100 || pet.happiness === 0){
-    console.log(`You killed ${pet.name} :( `);
-    showUpdateModal("You killed him");
-    
-    let restartBtn = document.createElement("button");
-    restartBtn.innerText = "Restart";
-    newDiv.appendChild(restartBtn);
-    restartBtn.addEventListener("click", ()=>{
-      location.reload();
-    })
+      let restartBtn = document.createElement("button");
+      restartBtn.innerText = "Restart";
+      newDiv.appendChild(restartBtn);
+      restartBtn.addEventListener("click", () => {
+        location.reload();
+      });
+    } else {
+      let buttonDiv = document.createElement("div");
+      buttonDiv.className = "buttonDiv";
+      newDiv.append(buttonDiv);
 
-  } else {
+      let napBtn = document.createElement("button");
+      napBtn.innerText = "Nap";
+      let playBtn = document.createElement("button");
+      playBtn.innerText = "Play";
+      let eatBtn = document.createElement("button");
+      eatBtn.innerText = "Eat";
 
-    let buttonDiv = document.createElement("div");
-    buttonDiv.className = "buttonDiv";
-    newDiv.append(buttonDiv);
+      buttonDiv.append(napBtn, playBtn, eatBtn);
 
-    let napBtn = document.createElement("button");
-    napBtn.innerText = "Nap";
-    let playBtn = document.createElement("button");
-    playBtn.innerText = "Play";
-    let eatBtn = document.createElement("button");
-    eatBtn.innerText = "Eat";
-
-    buttonDiv.append(napBtn, playBtn, eatBtn);
-
-    napBtn.addEventListener("click", () => {
-      pet.nap();
-      renderTamagotchi();
-    });
-    playBtn.addEventListener("click", () => {
-      pet.play();
-      renderTamagotchi();
-
-    });
-    eatBtn.addEventListener("click", () => {
-      pet.eat();
-      renderTamagotchi();
-    });
-  }});
+      napBtn.addEventListener("click", () => {
+        pet.nap();
+        renderTamagotchi();
+      });
+      playBtn.addEventListener("click", () => {
+        pet.play();
+        renderTamagotchi();
+      });
+      eatBtn.addEventListener("click", () => {
+        pet.eat();
+        renderTamagotchi();
+      });
+    }
+  });
 };
 
 renderTamagotchi();
 
-function showUpdateModal(text) {
+function showModal(text) {
   let modal = document.createElement("div");
   let div = document.querySelector(".newpetdiv");
   modal.innerText = text;
@@ -179,4 +186,11 @@ function showUpdateModal(text) {
   setTimeout(() => {
     div.removeChild(modal);
   }, 2000);
+}
+
+function actionText(text) {
+  infoDiv.innerHTML = "";
+  let p = document.createElement("p");
+  p.innerText = text;
+  infoDiv.append(p);
 }

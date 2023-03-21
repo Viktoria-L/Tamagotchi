@@ -18,7 +18,6 @@ input, select {
 }
 .tamagotchi {
     background: #FFC6D9;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,5 +103,11 @@ progress {
   
   progress::-webkit-progress-value {
     background-color: #389b3b;
+  }
+
+  .info {
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
   }
 
