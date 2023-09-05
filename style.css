@@ -1,5 +1,6 @@
 body {
     box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 h1, h2 {
     margin: 10px 0;
@@ -7,7 +8,8 @@ h1, h2 {
 }
 .create {
     background-color: var(--Mint-Green);
- 
+    max-width: 600px;
+    margin:auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +19,8 @@ input, select {
     padding: 3px;
 }
 .tamagotchi {
+    max-width: 600px;
+    margin:auto;
     background: #FFC6D9;
     display: flex;
     flex-direction: column;
@@ -53,10 +57,11 @@ input, select {
     border-radius: 4px;
     padding: 10px;
     margin: 10px;
-    border: 1px solid var(--Lavender)
+    border: 2px solid var(--Lavender);
+    background-color: var(--Pink);
 }
 .addbtn:hover {
-    background-color: #58cb5c;
+    background-color: var(--Light-Blue);
 }
 p{
     margin: 0;
