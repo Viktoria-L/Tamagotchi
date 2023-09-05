@@ -18,3 +18,5 @@ Man ska kunna skapa flera husdjur.
 När man använder en metod, ska det beskrivas i konsolen vad man gör och med vilket djur t.ex. “You played with Maya!” eller “You took a nap with Lexi” etc.  
 Lägg till en bild på djuret i div:en baserat på vilken djursort man valt.
 Hitta på egen funktionalitet! Din fantasi sätter gränsen :) Sätt t.ex en timer så att för varje 10 sekund, höjs samtliga värden förutom happiness med 10.
+
+👾 [Min Tamagotchi](https://viktoria-l.github.io/Tamagotchi/) 👾
